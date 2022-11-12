@@ -1,0 +1,95 @@
+//INDEX PAGE
+
+//--Circle status devices--
+
+//DEVICES REPOSE
+.devices0:after{
+    content:"";
+    position:absolute;
+    display:inline-block;
+    top:5px;
+    right:5px;
+    width: 10px;
+    height:10px;
+    background-color:#F1B44C;
+    border-radius:50%;
+}
+
+//DEVICES INACTIVE
+.devices2:after{
+    content:"";
+    position:absolute;
+    display:inline-block;
+    top:5px;
+    right:5px;
+    width: 10px;
+    height:10px;
+    background-color:#CF5A5A;
+    border-radius:50%;
+}
+
+//DEVICES ACTIVE
+.devices1:after{
+    content:"";
+    position:absolute;
+    display:inline-block;
+    top:5px;
+    right:5px;
+    width: 10px;
+    height:10px;
+    background-color:#009688;
+    border-radius:50%;
+    animation-name: parpadeo;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+@-moz-keyframes parpadeo{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+  
+  @-webkit-keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+  
+  @keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+#container__devices{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.devices__card{
+    cursor:pointer;
+}
+.options__device{
+    display:none;
+    bottom:5px;
+    right:5px;
+}
+.photo__perfil__device{
+    width:70px;
+    height:70px;
+}
+.devices__card:hover{
+ -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+  transition: transform 0.4s ease;
+  z-index:100;
+  background-color:$card-device-hover;
+}
+.w-5{
+    display:none;
+}
