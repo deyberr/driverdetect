@@ -13,15 +13,10 @@ class MapController extends Controller
         $original_data = json_decode($original_json_string, true);
         $coordinates = array();
         foreach($original_data as $key => $value) {
-            $coordinates[] = array('lat' => $value['lat'], 'lon' => $value['lon']);
+            $coordinates[] = array('lat' => $value['lat'], 'lon' => $value['lon'] , 'type' => $value['type'],  'speed' => $value['speed'] , 'proximity' => $value['proximity']);
         }
         $new_data = array(
-            'type' => 'FeatureCollection',
-            'features' => array(
-                'type' => 'Feature',
-                'geometry' => array('type' => 'Point', 'coordinates' => $coordinates),
-                'properties' => array('name' => 'value'),
-            ),
+            'coordinates' => $coordinates,
         );
         
         $final_data = json_encode($new_data, true);

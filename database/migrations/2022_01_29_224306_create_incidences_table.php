@@ -19,11 +19,11 @@ class CreateIncidencesTable extends Migration
             $table->foreign('id_device')->references('id')->on('devices')->onDelete('cascade');
             $table->unsignedInteger('id_driver');
             $table->foreign('id_driver')->references('id')->on('drivers')->onDelete('cascade');
-            $table->string('lon',200);
-            $table->string('lat',200);
+            $table->string('lon',200)->nullable();
+            $table->string('lat',200)->nullable();
             $table->integer('speed')->nullable(); 
             $table->integer('proximity')->nullable();
-            $table->integer('type');//0=velocidad;1=proximidad;2=ambas
+            $table->integer('type')->nullable();//0=velocidad;1=proximidad;2=ambas
             $table->timestamps();
         });
     }

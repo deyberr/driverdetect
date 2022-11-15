@@ -17,7 +17,7 @@ class CreateSpeedsTable extends Migration
             $table->id();
             $table->unsignedInteger('id_device');
             $table->foreign('id_device')->references('id')->on('devices')->onDelete('cascade');
-            $table->integer('value');
+            $table->integer('value')->nullable();
             $table->timestamps();
         });
     }

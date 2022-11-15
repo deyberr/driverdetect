@@ -89,60 +89,94 @@
 <script>
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGV5YmVyMTk5OSIsImEiOiJja3Z5aDVoczE5enF3Mm5xMW96bnNhZnp4In0.vFKnY9XndL8Ks2ioZwpPtA';
-var app = {{  Illuminate\Support\Js::from($coordenadas) }};
+let app = {{  Illuminate\Support\Js::from($coordenadas) }};
+app = JSON.parse(app);
+
+
+app.coordinates.forEach(element => {
+
+    let text;
+    if (element.type== '0') {
+
+        text=element.speed+' km/h';
+
+    }else{
+    
+        text=element.proximity+' metros a '+element.speed+' km/h';
+    }
+    element.text = text;
+   
+});
+
+
 
 let centergp=[-77.2811100, 1.2136100];
 const map = new mapboxgl.Map({
-          container: 'map', // container ID
-          style: 'mapbox://styles/mapbox/streets-v11', // style URL
-          center: centergp, // starting position [lng, lat]
-          zoom: 14 // starting zoom
+          container: 'map', 
+          style: 'mapbox://styles/mapbox/streets-v11', 
+          center: centergp, 
+          zoom: 14 
 });
 
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav,"top-left");
-const marker=document.createElement('i');
-marker.classList.add("marker-velocity", "fas", "fa-map-marker-alt")
 
 
-const markerDis=document.createElement('i');
-markerDis.classList.add("marker-velocity", "fas", "fa-map-marker-alt")
 
-const marker2=document.createElement('i');
-marker2.classList.add("marker-distance", "fas", "fa-map-marker-alt")
 
-new mapboxgl.Marker(marker2).setLngLat({
-    lng:-77.2851100,
-    lat:1.2136100
-}).setPopup(
-    new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML(
-        `<h5>Bajab brf - 05:14 pm</h5><p> 5 metros de distancia a 70 km/h</p>`
-      )
-  ).
-addTo(map);
 
-new mapboxgl.Marker(markerDis).setLngLat({
-    lng:-77.2711100,
-    lat:1.2136100
-}).setPopup(
-    new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML(
-        `<h5>Yamaha rx - 12:14 pm</h5><p> 3 metros de distancia a 30 km/h</p>`
-      )
-  ).
-addTo(map);
 
-new mapboxgl.Marker(marker).setLngLat({
-    lng:-77.2751100,
-    lat:1.2136100
-}).setPopup(
-    new mapboxgl.Popup({ offset: 25 }) // add popups
-      .setHTML(
-        `<h5>Honda cbr - 02:30 am </h5><p>60 km/h</p>`
-      )
-  ).
-addTo(map);
+app.coordinates.forEach(marker=>{
+
+    const markerVel=document.createElement('i');
+    markerVel.classList.add("marker-velocity", "fas", "fa-map-marker-alt")
+
+    const markerDis=document.createElement('i');
+    markerDis.classList.add("marker-distance", "fas", "fa-map-marker-alt")
+
+    new mapboxgl.Marker((marker.type=='0')?markerVel:markerDis).setLngLat({
+    lng:marker.lon,
+    lat:marker.lat
+    }).setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+        .setHTML(
+           marker.text
+        )
+    ).
+    addTo(map);
+})
+// new mapboxgl.Marker(marker2).setLngLat({
+//     lng:-77.2851100,
+//     lat:1.2136100
+// }).setPopup(
+//     new mapboxgl.Popup({ offset: 25 }) // add popups
+//       .setHTML(
+//         `<h5>Bajab brf - 05:14 pm</h5><p> 5 metros de distancia a 70 km/h</p>`
+//       )
+//   ).
+// addTo(map);
+
+// new mapboxgl.Marker(markerDis).setLngLat({
+//     lng:-77.2711100,
+//     lat:1.2136100
+// }).setPopup(
+//     new mapboxgl.Popup({ offset: 25 }) // add popups
+//       .setHTML(
+//         `<h5>Yamaha rx - 12:14 pm</h5><p> 3 metros de distancia a 30 km/h</p>`
+//       )
+//   ).
+// addTo(map);
+
+// new mapboxgl.Marker(marker).setLngLat({
+//     lng:-77.2751100,
+//     lat:1.2136100
+// }).setPopup(
+//     new mapboxgl.Popup({ offset: 25 }) // add popups
+//       .setHTML(
+//         `<h5>Honda cbr - 02:30 am </h5><p>60 km/h</p>`
+//       )
+//   ).
+// addTo(map);
 
 </script>
 

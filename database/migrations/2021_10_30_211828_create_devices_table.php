@@ -17,11 +17,11 @@ class CreateDevicesTable extends Migration
             $table->id();
             $table->string('key');
             $table->integer('status')->default('0');//0.Reposo,1.Activo,2.Suspendido
-            $table->integer('displacement');//Cilindraje
-            $table->string('type_brake',50);//tipo freno
-            $table->string('reference',50);//Referencia de la moto, susuky best
-            $table->string('licence_plate',50);//Placa
-            $table->integer('model');//Modelo de la moto
+            $table->integer('displacement')->nullable();//Cilindraje
+            $table->string('type_brake',50)->nullable();//tipo freno
+            $table->string('reference',50)->nullable();//Referencia de la moto, susuky best
+            $table->string('licence_plate',50)->nullable();//Placa
+            $table->integer('model')->nullable();//Modelo de la moto
             $table->string('url_script',250)->nullable();//script  arduino
             $table->timestamps();
         });

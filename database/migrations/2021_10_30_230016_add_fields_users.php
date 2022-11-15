@@ -16,10 +16,9 @@ class AddFieldsUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('role');
             $table->integer('status')->default('0');
-            $table->integer('type_id');
-            $table->string('id_user',50)->unique();
-            $table->string('gender',10);
-            $table->date('date_of_birth');
+            $table->integer('type_id')->nullable();
+            $table->string('gender',10)->nullable();
+            $table->date('date_of_birth')->nullable();
     
         
         });

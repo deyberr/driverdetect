@@ -25,6 +25,7 @@ class MonitoringDriverController extends Controller
         $año=$fecha->year;
 
         $user=Driver::where("id_device","=",$id)->get();
+
         // return $user[0]->id_user;
       // $user=Driver::findOrFail($id);
         $id_user=$user[0]->id_user;
@@ -52,10 +53,11 @@ class MonitoringDriverController extends Controller
             $dis=$this->countFaltasDistance($año,$k,$id);
             array_push($array_distance,$dis);
         }
+        $count_inc = incidence::where('id_device','=',$id)->count();
         
     
         
-        return view('admin.devices.monitoring.index',compact('id','año','array_distance','array_speed','device','user','edad','monitoreo'));
+        return view('admin.devices.monitoring.index',compact('count_inc','id','año','array_distance','array_speed','device','user','edad','monitoreo'));
     }
 
     public function countFaltasSpeed($year,$mes,$id_driver)
@@ -77,6 +79,7 @@ class MonitoringDriverController extends Controller
     {
         $device=Device::findOrFail($id);
         $name='script_id_user-'.$id.'.ino';
+
         if($device->url_script==''){
          //   Storage::put('scripts-arduino/'.$name,"import us  libr");
             Storage::append('scripts-arduino/'.$name, "variables y demas: $id");

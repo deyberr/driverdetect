@@ -84,7 +84,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted fw-medium">Imprudencias</p>
-                                    <h5 class="mb-0">10</h5>
+                                    <h5 class="mb-0">{{$count_inc}}</h5>
                                 </div>
 
                                 <div class="mini-stat-icon avatar-sm rounded-circle bg-danger align-self-center">
