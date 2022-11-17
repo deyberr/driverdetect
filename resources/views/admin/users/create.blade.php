@@ -87,7 +87,7 @@
                            <label for="i_type_id">Tipo de identificacion</label>
                          </div>
                          <div>
-                           {!! Form::select('type_id_doc', $tipos_id, null, ['class' => 'form-select','id'=>'i_type_id','placeholder'=>"Seleccione el tipo de identificación", 'required',  'minlength=3' ,'maxlength=50']) !!}
+                           {!! Form::select('type_id_doc', $types_id, null, ['class' => 'form-select','id'=>'i_type_id','placeholder'=>"Seleccione el tipo de identificación", 'required',  'minlength=3' ,'maxlength=50']) !!}
                          </div>
                            
                         </div>

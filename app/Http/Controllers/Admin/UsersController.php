@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use  App\Mail\passwordSendMailable;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
-use App\Models\TypeId;
+
 
 
 class UsersController extends Controller
@@ -32,9 +32,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $tipos_id = TypeId::all()->pluck('name','id');
-        
-        return view('admin.users.create',compact('tipos_id'));
+        $types_id = array('0' => 'Cedula de ciudadania', '1' => 'Tarjeta de identidad','2' => 'Cedula de extranjeria', '3' => 'Pasaporte');
+        return view('admin.users.create',compact('types_id'));
     }
 
     /**
@@ -89,8 +88,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user=User::findOrFail($id);
-
-        return view('admin.users.edit',compact('user'));
+        $types_id = array('0' => 'Cedula de ciudadania', '1' => 'Tarjeta de identidad','2' => 'Cedula de extranjeria', '3' => 'Pasaporte');
+        return view('admin.users.edit',compact('user','types_id'));
     }
 
     

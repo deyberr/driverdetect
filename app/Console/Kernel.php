@@ -4,7 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use PhpMqtt\Client\Facades\MQTT;
+
 use App\Models\Device;
 
 class Kernel extends ConsoleKernel
@@ -27,19 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function () {
-        $mqtt = MQTT::connection();
-    
-        $mqtt->subscribe('prueba', function ($topic, $message) {
-        //printf("Received message on topic [%s]: %s\n", $topic, $message);
-        $device= new Device;
-        $device->name=$topic;
-        $device->key=$message;
-        $device->save();
-        }, 0);
-        $mqtt->loop(true, true);
-            
-        })->daily();
+        
     }
 
     /**

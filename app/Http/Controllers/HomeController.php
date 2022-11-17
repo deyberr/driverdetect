@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
-use App\Models\TypeId;
+
 use Validator;
 
 class HomeController extends Controller
@@ -40,15 +40,15 @@ class HomeController extends Controller
     public function profileAdmin()
     {
         $user=Auth::user(); 
-        $type_id=TypeId::all()->pluck('name','id');
-        return view('admin.profile.index',compact('type_id','user'));
+        $type_id = array('0' => 'Cedula de ciudadania', '1' => 'Tarjeta de identidad','2' => 'Cedula de extranjeria', '3' => 'Pasaporte');
+        return view('admin.profile.index',compact('user','type_id'));
     }
 
     public function profileUser()
     {
         $user=Auth::user(); 
-        $type_id=TypeId::all()->pluck('name','id');
-        return view('user.profile.index',compact('type_id','user'));
+        $type_id = array('0' => 'Cedula de ciudadania', '1' => 'Tarjeta de identidad','2' => 'Cedula de extranjeria', '3' => 'Pasaporte');
+        return view('user.profile.index',compact('user','type_id'));
     }
 
     public function root()
