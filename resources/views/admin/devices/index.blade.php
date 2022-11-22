@@ -11,8 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- DataTables -->
     <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Select 2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    
 
 @endsection
 
@@ -89,10 +88,6 @@
     <script src="{{ URL::asset('/assets/js/pages/devices.init.js') }}"></script>
 
 
-    <!-- Select 2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 
     <script src="{{ URL::asset('/assets/js/utils/socket.js') }}"></script>
 
