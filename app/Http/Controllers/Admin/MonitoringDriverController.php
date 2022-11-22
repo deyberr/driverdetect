@@ -81,7 +81,7 @@ class MonitoringDriverController extends Controller
 
         if($device->url_script==''){
 
-            $str = <<<STR
+            $template = <<<STR
             /* wemos
  
             */
@@ -339,7 +339,8 @@ class MonitoringDriverController extends Controller
             return  location;
             }
             STR;
-          
+            Storage::put('scripts-arduino/'.$name,"// Init main");
+            Storage::append('scripts-arduino/'.$name, $template);
             $url="/storage/scripts-arduino/".$name;
             $device->url_script=$url;
             if($device->update()){
