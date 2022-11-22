@@ -70,7 +70,7 @@
             {!!Form::close()!!}
             @if($existe=="si")
             
-            <a href="http://localhost:8000/admin/pdf-reports?type={{Session::get('type_report')}}&value={{ Session::get('data_report') }}"
+            <a href="https://driverdetect.up.railway.app/admin/pdf-reports?type={{Session::get('type_report')}}&value={{ Session::get('data_report') }}"
                 target="_blank" class="btn btn-primary" rel="noopener noreferrer">Pdf</a>
             @endif
         
