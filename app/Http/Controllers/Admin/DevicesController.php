@@ -22,10 +22,8 @@ class DevicesController extends Controller
     public function index()
     {
 
-        $devices=array();
-        $users=array();
 
-        return view('admin.devices.index',compact('devices','users'));
+        return view('admin.devices.index');
     }
 
     /**
