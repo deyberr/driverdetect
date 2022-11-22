@@ -15,7 +15,8 @@ use Carbon\Carbon;
 class MonitoringDriverController extends Controller
 {
     public function index($id)
-    {
+    {   
+   
         $actual=Carbon::now();
         $año=$actual->year;
         $array_speed=array();
@@ -26,8 +27,6 @@ class MonitoringDriverController extends Controller
 
         $user=Driver::where("id_device","=",$id)->get();
 
-        // return $user[0]->id_user;
-      // $user=Driver::findOrFail($id);
         $id_user=$user[0]->id_user;
 
         $user=User::findOrFail($id_user);
@@ -81,7 +80,7 @@ class MonitoringDriverController extends Controller
         $name='script_id_user-'.$id.'.ino';
 
         if($device->url_script==''){
-         //   Storage::put('scripts-arduino/'.$name,"import us  libr");
+            //   Storage::put('scripts-arduino/'.$name,"import us  libr");
             Storage::append('scripts-arduino/'.$name, "variables y demas: $id");
             Storage::append('scripts-arduino/'.$name, "finnn");
             $url="/storage/scripts-arduino/".$name;
