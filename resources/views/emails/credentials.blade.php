@@ -30,7 +30,7 @@
             <p><strong>Contraseña:</strong> {{$tempassword}}</p>
 
             <p style="margin-top:20px">Puedes iniciar sesion en Driver Detect pulsando el boton</p>
-            <a target="_blank" href="https://www.driverdetect.railway.app/login"
+            <a target="_blank" href="https://www.driverdetect.up.railway.app/login"
                style="margin-bottom :20px ;background: #141E30;background: -webkit-linear-gradient(to right, #243B55, #141E30);background: linear-gradient(to right, #243B55, #141E30);padding:7px 5px;color:white;font-weight: bold;text-decoration: none;">
                Iniciar sesion
             </a>

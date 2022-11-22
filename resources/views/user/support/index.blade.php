@@ -117,7 +117,7 @@
     </div>
 
     <div class="d-none d-md-inline-block col-md-6">
-        <img class="w-100 h-100" src="{{ asset('assets/images/crypto/features-img/img-2.png') }}" alt="" srcset="">
+        <img  src="{{ asset('assets/images/contact_suport.svg') }}" alt="" srcset="" width="300" heigth="250">
     </div>
 
     

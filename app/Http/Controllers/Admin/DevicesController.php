@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreDevicesRequest;
 use Illuminate\Support\Str;
+use App\Models\incidence;
 
 class DevicesController extends Controller
 {
@@ -24,7 +25,7 @@ class DevicesController extends Controller
 
         $incidencias=incidence::all();
         return view('admin.reports.index');
-        
+
         $devices=DB::table('devices')->paginate(12);
         $users=User::where('role','user')->pluck('name','id');
 
