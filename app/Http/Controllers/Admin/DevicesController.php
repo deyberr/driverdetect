@@ -22,11 +22,11 @@ class DevicesController extends Controller
     public function index()
     {
 
-        // $devices=DB::table('devices')->paginate(12);
-        // $users=User::where('role','user')->pluck('name','id');
-        $devices=[];
-        $users=[];
-
+        $incidencias=incidence::all();
+        return view('admin.reports.index');
+        
+        $devices=DB::table('devices')->paginate(12);
+        $users=User::where('role','user')->pluck('name','id');
 
         return view('admin.devices.index',compact('devices','users'));
     }
