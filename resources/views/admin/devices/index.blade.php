@@ -11,7 +11,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- DataTables -->
     <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    
+    <!-- Select 2 -->
+    <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" />
 
 @endsection
 
@@ -70,7 +71,60 @@
         <div>
 
            <div id="container__devices" class="row">
-           
+           @if(count($devices)>0)
+           @foreach($devices as $dev)
+
+            <div class="devices__card card position-relative p-2  border col-sm-10 col-md-6 col-lg-4 ">
+            <a href="{{ route('admin.monitoring.driver',$dev->id) }}" id="{{$dev->id}}">
+            <div class="row">
+                    <div class="col-3 d-flex align-items-center">
+                        @php
+                            $driver=\DB::table('drivers')->where('id_device',$dev->id)->get();
+                            foreach($driver as $dr){
+                                $id_user=$dr->id_user;
+                            }
+
+                            $user=\DB::table('users')->find($id_user);
+
+                        @endphp
+                       <img class="photo__perfil__device img-thumbnail rounded-circle" src="{{URL::asset($user->avatar)}}"  alt="Foto de perfil" srcset="">
+                    </div>
+                    <div class="col-9 p-2">
+                        <div class="position-relative">
+                             <p class="devices{{$dev->status}}" data-type="status">{{$dev->reference}}</p>
+                        </div>
+                        @if($user->name)
+                            <small class="text-muted">{{$user->name}}</small>
+                        @else
+                            <small class="text-muted">Sin asignar</small>
+                        @endif
+
+                    </div>
+            </div>
+                <div class="options__device position-absolute">
+                     <span>
+                         <a href="devices/{{$dev->id}}/edit"id="{{$dev->id}}" class="btn_edit__device">
+                            <i class="bx bx-edit-alt btn btn-warning p-1"></i>
+                         </a>
+
+                        <a href="javascript:void(0)" id="{{$dev->id}}" class="btn_delete_device">
+                            <i class="bx bx-trash btn btn-danger p-1"></i>
+                        </a>
+
+                     </span>
+                </div>
+                </a>
+            </div>
+
+           @endforeach
+           @else
+                <h4 class="mt-2 text-muted">No existen registros</h4>
+           @endif
+           </div>
+
+           <div class="d-flex justify-content-center mt-4">
+            {{ $devices->links() }}
+           </div>
 
         </div>
 
@@ -88,6 +142,10 @@
     <script src="{{ URL::asset('/assets/js/pages/devices.init.js') }}"></script>
 
 
+    <!-- Select 2 -->
+    <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+    <script src="{{ URL::asset('/assets/libs/paho/paho-mqtt.min.js') }}" type="text/javascript"></script>
 
     <script src="{{ URL::asset('/assets/js/utils/socket.js') }}"></script>
 
