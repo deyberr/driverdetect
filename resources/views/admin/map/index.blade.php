@@ -98,11 +98,12 @@ app.coordinates.forEach(element => {
     let text;
     if (element.type== '0') {
 
-        text=element.speed+' km/h';
-
+        text=element.proximity+' metros a '+element.speed+' km/h';
+        
     }else{
     
-        text=element.proximity+' metros a '+element.speed+' km/h';
+        text=element.speed+' km/h';
+
     }
     element.text = text;
    
