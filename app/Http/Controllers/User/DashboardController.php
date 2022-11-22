@@ -14,6 +14,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        
         $id_usuario=Auth::user()->id;
         $id_user=Driver::findOrFail($id_usuario)->pluck('id_user');
         $user=User::findOrFail($id_user)->first();

@@ -73,7 +73,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <p class="text-muted fw-medium">Imprudencias</p>
-                                    <h5 class="mb-0">10</h5>
+                                    <h5 class="mb-0">0</h5>
                                 </div>
 
                                 <div class="mini-stat-icon avatar-sm rounded-circle bg-danger align-self-center">
@@ -192,6 +192,28 @@ let velocymeter = document.getElementById('velocimetro-driver');
 let chartVel = echarts.init(velocymeter);
 let optionsVel;
 
+optionsVel = {
+  tooltip: {
+    formatter: '{a} <br/>{b} : {c}%'
+  },
+  series: [{
+    name: 'Pressure',
+    type: 'gauge',
+    progress: {
+      show: true
+    },
+    detail: {
+      valueAnimation: true,
+      formatter: '{value}'
+    },
+    data: [{
+      value: 0,
+      name: 'KM/H'
+    }]
+  }]
+};
+optionsVel && chartVel.setOption(optionsVel);
+
 let historial = document.getElementById('historial-velocimetro');
 let chartHistorial = echarts.init(historial);
 let opciones;
@@ -230,13 +252,13 @@ opciones = {
       name: 'Jornada diurna',
       type: 'line',
       stack: 'Total',
-      data: [50, 70, 40, 35, 89, 100, 79]
+      data: [0, 5, 20, 0, 0, 3, 10]
     },
     {
       name: 'Jornada nocturna',
       type: 'line',
       stack: 'Total',
-      data: [80, 70, 98, 120, 67, 67, 67]
+      data: [10, 4, 12, 0, 0, 2, 0]
     },
     
   ]

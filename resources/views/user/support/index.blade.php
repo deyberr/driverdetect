@@ -21,13 +21,13 @@
 
 <div class="row">
     <div class="col-12">
-        <p>Si tienes algunas dudas con respecto al correcto 
+        <!-- <p>Si tienes algunas dudas con respecto al correcto 
         funcionamiento del aplicativo ingresa en el siguiente link
                 <a target="_blank" href="{{ route('user.support.tutorial') }}"
                     class="">
                     Tutorial
                 </a>
-        </p>
+        </p> -->
     </div>
 </div>
 <div class="row mt-1">
